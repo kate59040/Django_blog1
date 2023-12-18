@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Блог{% endblock %}
+
+{% block content %}
+    <section>
+        <h2>Blog</h2>
+        <ul>
+            {% for blogpost in blogposts %}
+                <li><h3>{{ blogpost.title }}</h3>
+                    {{ blogpost.content }}
+                    <br>
+                    <br>
+                    <i>Author: {{ blogpost.author }}
+                        <br>
+                        Date: {{ blogpost.date }}
+                    </i>
+
+                    {% if user.is_authenticated and blogpost.author.id == user.id %}
+                        <a href="{% url 'delete_blogpost' blogpost.id %}">Delete post</a>
+                        <a href="{% url 'update_blogpost' blogpost.id %}">Edit post</a>
+                    {% endif %}
+                </li>
+                <br>
+                <br>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
