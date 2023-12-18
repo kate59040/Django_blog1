@@ -6,4 +6,4 @@ COPY . /app
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "/Django_project/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "/app/Django_project/manage.py", "runserver", "0.0.0.0:8000"]
